@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct swimpalApp: App {
+    
+    @StateObject private var manager: DataManager = DataManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
+                .environmentObject(manager)
+                .environment(\.managedObjectContext, manager.container.viewContext)
         }
     }
 }
